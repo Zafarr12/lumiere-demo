@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumière — Beauty & Wellness Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#faf7f2;--blush:#f5ede6;--rose:#e8c4b4;--deep-rose:#c4806a;
+  --mauve:#8b6f6f;--mist:#e8e0d8;--charcoal:#2d2520;
+  --gold:#c9a87c;--text:rgba(45,37,32,0.75);--muted:rgba(45,37,32,0.4);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--ivory);color:var(--charcoal);overflow-x:hidden}
+
+/* ── DELICATE PATTERN BG ── */
+body::before{content:'';position:fixed;inset:0;opacity:0.025;pointer-events:none;background-image:radial-gradient(circle,var(--charcoal) 1px,transparent 1px);background-size:28px 28px;z-index:0}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s}
+nav.scrolled{background:rgba(250,247,242,0.95);backdrop-filter:blur(16px);padding:1rem 4rem;border-bottom:1px solid rgba(200,168,124,0.15)}
+.nav-logo{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:400;font-style:italic;letter-spacing:0.08em;color:var(--charcoal);text-decoration:none}
+.nav-logo span{color:var(--deep-rose)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--text);text-decoration:none;font-size:0.72rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--deep-rose)}
+.nav-book{border:1px solid rgba(196,128,106,0.4);color:var(--deep-rose);padding:0.55rem 1.4rem;font-size:0.62rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;transition:all 0.3s;font-family:'Jost',sans-serif}
+.nav-book:hover{background:var(--deep-rose);color:white}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--blush);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+/* Soft circle decoration */
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:70%;padding-bottom:70%;border-radius:50%;background:radial-gradient(circle,rgba(200,168,124,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 4rem 4rem;position:relative;z-index:1}
+.hero-eyebrow{font-size:0.62rem;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:var(--deep-rose);margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(196,128,106,0.4),transparent);max-width:60px}
+.hero-h1{font-family:'Libre Baskerville',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:400;line-height:1.15;letter-spacing:-0.01em;color:var(--charcoal);margin-bottom:1.5rem}
+.hero-h1 em{font-style:italic;color:var(--deep-rose)}
+.hero-sub{font-size:0.9rem;font-weight:300;color:var(--text);line-height:2;max-width:420px;margin-bottom:3rem;letter-spacing:0.02em}
+.hero-actions{display:flex;align-items:center;gap:2rem;margin-bottom:4rem}
+.btn-rose{background:var(--deep-rose);color:white;padding:0.95rem 2.4rem;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:all 0.3s;font-family:'Jost',sans-serif;border-radius:1px}
+.btn-rose:hover{background:var(--mauve);transform:translateY(-1px);box-shadow:0 8px 24px rgba(196,128,106,0.25)}
+.btn-text-link{color:var(--charcoal);font-size:0.65rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:color 0.3s;display:flex;align-items:center;gap:0.5rem}
+.btn-text-link:hover{color:var(--deep-rose)}
+.hero-trust{display:flex;gap:2.5rem}
+.hero-trust-item{display:flex;align-items:center;gap:0.6rem}
+.trust-dot{width:6px;height:6px;border-radius:50%;background:var(--rose);flex-shrink:0}
+.trust-text{font-size:0.68rem;font-weight:300;color:var(--text);letter-spacing:0.05em}
+.hero-right{position:relative;background:var(--rose);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(250,247,242,0.1) 0%,rgba(196,128,106,0.15) 100%)}
+.hero-img-placeholder{position:relative;z-index:1;text-align:center}
+.hero-circle{width:320px;height:320px;border-radius:50%;border:1px solid rgba(201,168,124,0.3);display:flex;align-items:center;justify-content:center;position:relative}
+.hero-circle::before{content:'';position:absolute;inset:20px;border-radius:50%;border:1px solid rgba(201,168,124,0.2)}
+.hero-circle-inner{font-family:'Libre Baskerville',serif;font-style:italic;font-size:1rem;color:rgba(201,168,124,0.5);letter-spacing:0.1em;text-align:center;line-height:2}
+/* Floating elements */
+.hero-float{position:absolute;background:var(--ivory);padding:0.75rem 1.2rem;border-radius:1px;box-shadow:0 8px 32px rgba(45,37,32,0.08);font-size:0.7rem;font-weight:400;letter-spacing:0.05em;color:var(--charcoal)}
+.hero-float-1{top:25%;left:5%;animation:float1 4s ease-in-out infinite}
+.hero-float-2{bottom:25%;right:5%;animation:float1 4s ease-in-out infinite 2s}
+.hero-float span{color:var(--deep-rose);font-weight:500}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ── SERVICES ── */
+.services{padding:9rem 4rem;background:var(--ivory)}
+.services-inner{max-width:1200px;margin:0 auto}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem}
+.section-label{font-size:0.6rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:var(--deep-rose);margin-bottom:0.75rem}
+.section-h2{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:400;line-height:1.2;color:var(--charcoal)}
+.section-h2 em{font-style:italic;color:var(--deep-rose)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:var(--blush);padding:2.5rem;transition:all 0.4s;position:relative;overflow:hidden;cursor:pointer}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--deep-rose),var(--gold));transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
+.service-card:hover{background:white;box-shadow:0 16px 48px rgba(45,37,32,0.08);transform:translateY(-4px)}
+.service-card:hover::after{transform:scaleX(1)}
+.service-icon{width:3rem;height:3rem;margin-bottom:1.5rem;color:var(--deep-rose)}
+.service-icon svg{width:100%;height:100%}
+.service-name{font-family:'Libre Baskerville',serif;font-size:1.15rem;font-weight:400;margin-bottom:0.5rem;color:var(--charcoal)}
+.service-desc{font-size:0.78rem;font-weight:300;color:var(--text);line-height:1.9;margin-bottom:1.5rem}
+.service-items{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem}
+.service-tag{font-size:0.62rem;font-weight:400;color:var(--mauve);background:rgba(139,111,111,0.08);padding:0.2rem 0.6rem;letter-spacing:0.05em}
+.service-price-from{font-size:0.62rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+.service-price{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:400;color:var(--charcoal)}
+
+/* ── ABOUT / PHILOSOPHY ── */
+.philosophy{padding:9rem 4rem;background:var(--charcoal);color:var(--ivory);position:relative;overflow:hidden}
+.philosophy::before{content:'';position:absolute;top:-100px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,124,0.05),transparent 70%)}
+.phil-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
+.phil-label{font-size:0.6rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.phil-h2{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:400;line-height:1.2;margin-bottom:1.5rem}
+.phil-h2 em{font-style:italic;color:var(--gold)}
+.phil-text{font-size:0.85rem;font-weight:300;color:rgba(250,247,242,0.6);line-height:2;margin-bottom:1.5rem}
+.phil-values{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,124,0.15)}
+.phil-value-num{font-family:'Libre Baskerville',serif;font-size:2rem;font-weight:400;color:var(--gold);line-height:1;margin-bottom:0.3rem}
+.phil-value-label{font-size:0.65rem;font-weight:300;color:rgba(250,247,242,0.4);letter-spacing:0.1em;text-transform:uppercase}
+/* Right side decorative */
+.phil-right{position:relative}
+.phil-quote{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-style:italic;font-weight:400;color:rgba(250,247,242,0.7);line-height:1.6;margin-bottom:2rem;padding-left:2rem;border-left:2px solid var(--gold)}
+.phil-team{display:flex;flex-direction:column;gap:1.2rem}
+.phil-member{display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,124,0.1)}
+.phil-avatar{width:3rem;height:3rem;border-radius:50%;background:linear-gradient(135deg,rgba(201,168,124,0.2),rgba(196,128,106,0.1));border:1px solid rgba(201,168,124,0.2);display:flex;align-items:center;justify-content:center;font-family:'Libre Baskerville',serif;font-size:1rem;font-style:italic;color:var(--gold);flex-shrink:0}
+.phil-member-name{font-size:0.85rem;font-weight:400;color:var(--ivory);margin-bottom:0.1rem}
+.phil-member-role{font-size:0.65rem;font-weight:300;color:rgba(250,247,242,0.4);letter-spacing:0.08em;text-transform:uppercase}
+
+/* ── MENU / PRICING ── */
+.pricing-section{padding:9rem 4rem;background:var(--blush)}
+.pricing-inner{max-width:1000px;margin:0 auto}
+.pricing-header{text-align:center;margin-bottom:4rem}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.price-card{background:var(--ivory);padding:2.5rem;text-align:center;border:1px solid var(--mist);transition:all 0.4s;position:relative}
+.price-card:hover{border-color:rgba(196,128,106,0.3);box-shadow:0 20px 60px rgba(45,37,32,0.08);transform:translateY(-4px)}
+.price-card.featured{background:var(--charcoal);color:var(--ivory);border-color:transparent}
+.price-card.featured .price-desc{color:rgba(250,247,242,0.5)}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--deep-rose);color:white;font-size:0.58rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:0.25rem 0.9rem;white-space:nowrap}
+.price-name{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:400;margin-bottom:0.5rem}
+.price-desc{font-size:0.72rem;font-weight:300;color:var(--text);margin-bottom:1.5rem;line-height:1.7}
+.price-amount{font-family:'Libre Baskerville',serif;font-size:2.8rem;font-weight:400;line-height:1;margin-bottom:1.5rem}
+.price-amount span{font-size:1rem;font-family:'Jost',sans-serif;font-weight:300}
+.price-card.featured .price-amount{color:var(--gold)}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:2rem;text-align:left}
+.price-features li{font-size:0.75rem;font-weight:300;color:var(--text);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.5}
+.price-card.featured .price-features li{color:rgba(250,247,242,0.6)}
+.price-features li::before{content:'◦';color:var(--deep-rose);flex-shrink:0;margin-top:0.05rem}
+.price-btn{width:100%;padding:0.85rem;border:1.5px solid rgba(45,37,32,0.15);background:none;font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;color:var(--charcoal);transition:all 0.3s}
+.price-btn:hover{background:var(--deep-rose);border-color:var(--deep-rose);color:white}
+.price-card.featured .price-btn{border-color:var(--gold);color:var(--gold)}
+.price-card.featured .price-btn:hover{background:var(--gold);color:var(--charcoal)}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:9rem 4rem;background:var(--ivory)}
+.test-inner{max-width:1200px;margin:0 auto}
+.test-header{text-align:center;margin-bottom:4rem}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.test-card{padding:2.5rem;background:var(--blush);position:relative;transition:all 0.3s}
+.test-card:hover{background:white;box-shadow:0 8px 32px rgba(45,37,32,0.06)}
+.test-quote-mark{font-family:'Libre Baskerville',serif;font-size:4rem;font-weight:400;color:rgba(196,128,106,0.15);line-height:1;margin-bottom:0.5rem;font-style:italic}
+.test-quote{font-family:'Libre Baskerville',serif;font-size:0.88rem;font-style:italic;font-weight:400;color:var(--text);line-height:1.9;margin-bottom:1.5rem}
+.test-stars{color:var(--gold);font-size:0.75rem;letter-spacing:2px;margin-bottom:0.75rem}
+.test-author-row{display:flex;align-items:center;gap:0.75rem}
+.test-avatar{width:2.5rem;height:2.5rem;border-radius:50%;background:var(--rose);border:1px solid rgba(196,128,106,0.2);display:flex;align-items:center;justify-content:center;font-family:'Libre Baskerville',serif;font-size:0.85rem;font-style:italic;color:var(--charcoal);flex-shrink:0}
+.test-name{font-weight:500;font-size:0.82rem}
+.test-detail{font-size:0.65rem;font-weight:300;color:var(--muted);letter-spacing:0.05em}
+
+/* ── BOOKING CTA ── */
+.booking{padding:9rem 4rem;background:var(--blush);position:relative;overflow:hidden}
+.booking::before{content:'';position:absolute;bottom:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(196,128,106,0.08),transparent 70%)}
+.booking-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.booking-h2{font-family:'Libre Baskerville',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:400;line-height:1.2;color:var(--charcoal);margin-bottom:1.2rem}
+.booking-h2 em{font-style:italic;color:var(--deep-rose)}
+.booking-sub{font-size:0.85rem;font-weight:300;color:var(--text);line-height:2;margin-bottom:3rem;letter-spacing:0.02em}
+.booking-form{display:flex;gap:0;max-width:480px;margin:0 auto 1rem}
+.booking-input{flex:1;background:white;border:1px solid var(--mist);border-right:none;padding:0.9rem 1.2rem;font-family:'Jost',sans-serif;font-size:0.78rem;color:var(--charcoal);outline:none;transition:border 0.3s}
+.booking-input:focus{border-color:rgba(196,128,106,0.5)}
+.booking-input::placeholder{color:var(--muted)}
+.booking-submit{background:var(--deep-rose);color:white;border:none;padding:0.9rem 1.8rem;font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:background 0.3s;white-space:nowrap}
+.booking-submit:hover{background:var(--mauve)}
+.booking-note{font-size:0.65rem;font-weight:300;color:var(--muted);letter-spacing:0.05em}
+
+/* ── FOOTER ── */
+footer{background:var(--charcoal);padding:4rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem}
+.footer-brand{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-style:italic;color:var(--ivory);margin-bottom:0.75rem}
+.footer-brand span{color:var(--gold)}
+.footer-tagline{font-size:0.72rem;font-weight:300;color:rgba(250,247,242,0.35);line-height:1.8;max-width:220px}
+.footer-title{font-size:0.58rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.footer-links a{font-size:0.72rem;font-weight:300;color:rgba(250,247,242,0.4);text-decoration:none;letter-spacing:0.05em;transition:color 0.3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{max-width:1200px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(250,247,242,0.06);display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:0.62rem;color:rgba(250,247,242,0.2);letter-spacing:0.08em}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+[class*="delay-1"]{transition-delay:0.15s}
+[class*="delay-2"]{transition-delay:0.3s}
+
+@media(max-width:900px){
+  nav{padding:1.2rem 1.5rem}
+  nav.scrolled{padding:0.8rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:7rem 1.5rem 3rem}
+  .hero-right{min-height:300px}
+  .services,.philosophy,.pricing-section,.testimonials,.booking{padding:5rem 1.5rem}
+  .phil-inner{grid-template-columns:1fr;gap:3rem}
+  .services-grid,.pricing-grid,.test-grid{grid-template-columns:1fr}
+  .services-header{flex-direction:column;gap:1.5rem}
+  .footer-inner{grid-template-columns:1fr;gap:2rem}
+  footer{padding:3rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Lumière<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="#booking" class="nav-book">Book Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Beauty & Wellness Studio</div>
+    <h1 class="hero-h1">Your beauty,<br>our <em>artistry</em></h1>
+    <p class="hero-sub">A sanctuary of refined beauty treatments. From precision haircuts to transformative skincare — every visit is an experience crafted just for you.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-rose">Book Appointment</a>
+      <a href="#services" class="btn-text-link">View Services →</a>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-item"><div class="trust-dot"></div><div class="trust-text">Certified masters</div></div>
+      <div class="hero-trust-item"><div class="trust-dot"></div><div class="trust-text">Premium products only</div></div>
+      <div class="hero-trust-item"><div class="trust-dot"></div><div class="trust-text">Satisfaction guaranteed</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <div class="hero-circle">
+        <div class="hero-circle-inner">
+          Your<br>photo<br>here
+        </div>
+      </div>
+    </div>
+    <div class="hero-float hero-float-1">⭐⭐⭐⭐⭐ <span>"Absolutely flawless"</span></div>
+    <div class="hero-float hero-float-2">Open <span>7 days</span> · 9am – 8pm</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-h2">Treatments for<br>every <em>occasion</em></h2>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <div class="service-name">Hair Studio</div>
+        <div class="service-desc">Precision cuts, colour artistry, and nourishing treatments by our senior stylists. Whether a subtle refresh or a bold transformation — we deliver.</div>
+        <div class="service-items">
+          <span class="service-tag">Women's Cut</span>
+          <span class="service-tag">Men's Cut</span>
+          <span class="service-tag">Colour & Balayage</span>
+          <span class="service-tag">Keratin</span>
+          <span class="service-tag">Extensions</span>
+        </div>
+        <div class="service-price-from">Starting from</div>
+        <div class="service-price">$35</div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <div class="service-name">Nail Art & Care</div>
+        <div class="service-desc">Meticulous nail care from classic manicure to intricate nail art. We use only salon-grade, long-lasting products with a focus on nail health.</div>
+        <div class="service-items">
+          <span class="service-tag">Manicure</span>
+          <span class="service-tag">Pedicure</span>
+          <span class="service-tag">Gel Polish</span>
+          <span class="service-tag">Nail Art</span>
+          <span class="service-tag">Extensions</span>
+        </div>
+        <div class="service-price-from">Starting from</div>
+        <div class="service-price">$25</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+        <div class="service-name">Skin & Facials</div>
+        <div class="service-desc">Restore radiance with our signature facial treatments. From deep pore cleansing to advanced anti-aging protocols tailored to your skin type.</div>
+        <div class="service-items">
+          <span class="service-tag">Deep Cleanse</span>
+          <span class="service-tag">Hydrafacial</span>
+          <span class="service-tag">Peeling</span>
+          <span class="service-tag">Microneedling</span>
+          <span class="service-tag">Anti-Aging</span>
+        </div>
+        <div class="service-price-from">Starting from</div>
+        <div class="service-price">$55</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="about">
+  <div class="phil-inner">
+    <div class="reveal">
+      <div class="phil-label">Our Philosophy</div>
+      <h2 class="phil-h2">Beauty is a<br><em>feeling</em>, not just<br>a look</h2>
+      <p class="phil-text">At Lumière, we believe that true beauty comes from within — and that our role is to let it shine. Every treatment is an act of care, every visit a moment of restoration.</p>
+      <p class="phil-text">We use only premium, skin-safe products and invest constantly in the training and certification of our team. Because you deserve nothing less than the best.</p>
+      <div class="phil-values">
+        <div><div class="phil-value-num">8+</div><div class="phil-value-label">Years in Tashkent</div></div>
+        <div><div class="phil-value-num">12</div><div class="phil-value-label">Certified Masters</div></div>
+        <div><div class="phil-value-num">4.9★</div><div class="phil-value-label">Client Rating</div></div>
+        <div><div class="phil-value-num">100%</div><div class="phil-value-label">Premium Products</div></div>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="phil-quote">"We don't just change how you look — we change how you feel when you leave."</div>
+      <div class="phil-team">
+        <div class="phil-member"><div class="phil-avatar">M</div><div><div class="phil-member-name">Malika Yusupova</div><div class="phil-member-role">Founder & Head Stylist</div></div></div>
+        <div class="phil-member"><div class="phil-avatar">N</div><div><div class="phil-member-name">Nilufar Rашidova</div><div class="phil-member-role">Lead Skin Specialist</div></div></div>
+        <div class="phil-member"><div class="phil-avatar">D</div><div><div class="phil-member-name">Dilorom Hasanova</div><div class="phil-member-role">Senior Nail Artist</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header reveal">
+      <div class="section-label">Membership Packages</div>
+      <h2 class="section-h2">Invest in<br><em>yourself</em></h2>
+      <p style="font-size:0.8rem;font-weight:300;color:var(--text);margin-top:1rem">One-time treatments or monthly packages — your choice.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-name">Essentials</div>
+        <div class="price-desc">Perfect for occasional visits. Pay per treatment at member rates.</div>
+        <div class="price-amount">$0 <span>to join</span></div>
+        <ul class="price-features">
+          <li>Member pricing on all services</li>
+          <li>Priority booking via Telegram</li>
+          <li>Birthday treatment discount</li>
+          <li>Complimentary consultation</li>
+        </ul>
+        <button class="price-btn" onclick="window.location='#booking'">Get Started</button>
+      </div>
+      <div class="price-card featured reveal reveal-delay-1">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-name">Glow Monthly</div>
+        <div class="price-desc">Your monthly beauty ritual. Everything you need, one flat price.</div>
+        <div class="price-amount">$149 <span>/ month</span></div>
+        <ul class="price-features">
+          <li>1 hair treatment per month</li>
+          <li>2 nail appointments</li>
+          <li>1 facial treatment</li>
+          <li>10% off all extras</li>
+          <li>Free express services</li>
+        </ul>
+        <button class="price-btn" onclick="window.location='#booking'">Subscribe Now</button>
+      </div>
+      <div class="price-card reveal reveal-delay-2">
+        <div class="price-name">Lumière VIP</div>
+        <div class="price-desc">Unlimited beauty. The full Lumière experience without compromise.</div>
+        <div class="price-amount">$299 <span>/ month</span></div>
+        <ul class="price-features">
+          <li>Unlimited services</li>
+          <li>Dedicated personal master</li>
+          <li>Same-day appointments</li>
+          <li>Premium product gifts monthly</li>
+          <li>Complimentary home visits (x2)</li>
+        </ul>
+        <button class="price-btn" onclick="window.location='#booking'">Go VIP</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-inner">
+    <div class="test-header reveal">
+      <div class="section-label">Client Stories</div>
+      <h2 class="section-h2">Loved by <em>every</em> guest</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-quote-mark">"</div>
+        <div class="test-quote">I've been coming to Lumière for three years and I wouldn't go anywhere else. Malika understands my hair better than I do — every cut is perfect.</div>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-author-row"><div class="test-avatar">Z</div><div><div class="test-name">Zulfiya K.</div><div class="test-detail">Regular Client · 3 years</div></div></div>
+      </div>
+      <div class="test-card reveal reveal-delay-1">
+        <div class="test-quote-mark">"</div>
+        <div class="test-quote">The Hydrafacial changed my skin completely. After 4 sessions my colleagues were asking what I'd done differently. I'm a subscriber for life now.</div>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-author-row"><div class="test-avatar">S</div><div><div class="test-name">Sabohat M.</div><div class="test-detail">Glow Monthly Member</div></div></div>
+      </div>
+      <div class="test-card reveal reveal-delay-2">
+        <div class="test-quote-mark">"</div>
+        <div class="test-quote">I booked for my wedding prep and the whole team was just exceptional. The nail art was intricate, the blow-dry lasted days. Truly five-star service.</div>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-author-row"><div class="test-avatar">N</div><div><div class="test-name">Nodira A.</div><div class="test-detail">Bridal Package Client</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-inner">
+    <div class="section-label reveal">Make an Appointment</div>
+    <h2 class="booking-h2 reveal">Ready to feel<br><em>beautiful?</em></h2>
+    <p class="booking-sub reveal">Leave your number and we'll call you to confirm the best time. Or reach us directly on Telegram for instant booking.</p>
+    <form class="booking-form reveal" onsubmit="return false">
+      <input class="booking-input" type="tel" placeholder="Your phone number">
+      <button class="booking-submit">Book Now</button>
+    </form>
+    <div class="booking-note reveal">Or message us on Telegram: @yoursalon · Open 7 days, 9am – 8pm</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Lumière<span>.</span></div>
+      <div class="footer-tagline">Beauty & wellness studio. Tashkent. Open 7 days, 9am – 8pm.</div>
+    </div>
+    <div>
+      <div class="footer-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">Hair Studio</a></li>
+        <li><a href="#">Nail Art</a></li>
+        <li><a href="#">Facials</a></li>
+        <li><a href="#">Bridal Packages</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Studio</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Membership</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Find Us</div>
+      <ul class="footer-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Telegram</a></li>
+        <li><a href="#">123 Navruz Ave, Tashkent</a></li>
+        <li><a href="#">+998 71 XXX XXXX</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Lumière Beauty Studio. All rights reserved.</div>
+    <div class="footer-copy">Built with PageCraft</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)})
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+</script>
+</body>
+</html>
